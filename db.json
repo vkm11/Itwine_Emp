@@ -1,0 +1,82 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "firstName": "Nithin",
+      "lastName": "Gowda",
+      "email": "nithin@gmail.com",
+      "mobile": "987612340",
+      "salary": "15000"
+    },
+    {
+      "id": 3,
+      "firstName": "Surya",
+      "lastName": "M",
+      "email": "surya@gmail.com",
+      "mobile": "9873648289",
+      "salary": "15000"
+    },
+    {
+      "id": 4,
+      "firstName": "Kumar",
+      "lastName": "Patil",
+      "email": "kumar@gmail.com",
+      "mobile": "9083732932",
+      "salary": "10999"
+    }
+  ],
+  "signupUser": [
+    {
+      "fullname": "Gokul Itwine",
+      "email": "gokul@gmail.com",
+      "password": "123",
+      "mobile": "9878978762",
+      "id": 1
+    },
+    {
+      "fullname": "",
+      "email": "gokul@gmail.com",
+      "password": "gogo@123",
+      "mobile": "",
+      "id": 2
+    },
+    {
+      "fullname": "Gokul Itwine",
+      "email": "gokul@gmail.com",
+      "password": "123",
+      "mobile": "123123",
+      "id": 3
+    },
+    {
+      "fullname": "",
+      "email": "gokul@gmail.com",
+      "password": "gogo@123",
+      "mobile": "",
+      "id": 4
+    },
+    {
+      "fullname": "",
+      "email": "gokul@gmail.com",
+      "password": "gogo@123",
+      "mobile": "",
+      "id": 5
+    },
+    {
+      "fullname": "",
+      "email": "gokul@gmail.com",
+      "password": "gogo@123",
+      "mobile": "",
+      "id": 6
+    },
+    {
+      "fullname": "",
+      "email": "gokul@gmail.com",
+      "password": "gogo@123",
+      "mobile": "",
+      "id": 7
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
