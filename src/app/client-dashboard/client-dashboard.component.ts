@@ -2,7 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 import { ClientService } from '../services/client.service';
 import { clientModel } from '../models/client.model';
-
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -22,7 +23,24 @@ export class ClientDashboardComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private api : ClientService) { }
 
-    
+  
+  // Export to PDF File
+  public openPDF(): void {
+    let DATA: any = document.getElementById('htmlData');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
+  }
+
+
+
+
   ngOnInit(): void {
     this.clientForm = this.fb.group({
       firstName: new FormControl('',[Validators.required]),

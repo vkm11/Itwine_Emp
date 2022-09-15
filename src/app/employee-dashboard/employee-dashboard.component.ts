@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceApiService } from '../services/service-api.service';
 import { EmployeeModel } from './employee-dash board.model';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
@@ -18,6 +20,22 @@ export class EmployeeDashboardComponent implements OnInit {
 
   constructor(private formbuilder: FormBuilder,
     private api : ServiceApiService) { }
+
+
+// Export to PDF File
+  public openPDF(): void {
+      let DATA: any = document.getElementById('htmlData');
+      html2canvas(DATA).then((canvas) => {
+        let fileWidth = 208;
+        let fileHeight = (canvas.height * fileWidth) / canvas.width;
+        const FILEURI = canvas.toDataURL('image/png');
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+        PDF.save('angular-demo.pdf');
+      });
+    }
+
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
