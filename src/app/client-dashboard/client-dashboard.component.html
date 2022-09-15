@@ -10,6 +10,51 @@
     Add Client
   </button>
 </div>
+
+
+
+<table class="table table-dark table-hover">
+  <thead>
+      <tr style="font-size:20px"> 
+          <th scope="col">Client ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Projects</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Email ID</th>
+          <th scope="col">Mobile No.</th>
+          <th scope="col">Address</th>
+          <th scope="col">Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let row of clientData">
+          <td>{{row.id}}</td>
+          <td>{{row.firstName}}</td>
+          <td>{{row.lastName}}</td>
+          <td>{{row.date}}</td>
+          <td>{{row.project}}</td>
+          <td>{{row.gender}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.mobile}}</td>
+          <td>{{row.address}}</td>
+
+          <td>
+              <svg (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen " viewBox="0 0 16 16">
+                  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/> 
+              </svg>
+              
+              <svg (click)="deleteClient(row)" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-x mx-3" viewBox="0 0 16 16">
+                  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                  <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+              </svg>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -40,30 +85,58 @@
                 <span class="text-danger" *ngIf="clientForm.controls['date'].dirty && clientForm.hasError('required','date')">*Date is required</span>
               </div>
               <div class="col">
-                <label for="radiobtn" class="form-label">Gender</label>
-                <div class="d-flex ">
-                  <div class="form-check m-2">
-                    <input class="form-check-input" type="radio" name="gender" id="male">
-                    <label class="form-check-label" for="male">Male</label>
-                  </div>
-                  <div class="form-check m-2">
-                    <input class="form-check-input" type="radio" name="gender" id="female" checked>
-                    <label class="form-check-label" for="female">Female</label>
-                  </div>
+                <div class="form-group">
+                  <label for="gender">Gender:</label>
+                  <div class="d-flex ">
+                    <div class="form-check m-2">
+                      <input id="male" type="radio" value="male" name="gender" formControlName="gender">
+                      <label for="male">Male</label>
+                    </div>
+         
+                    <div class="form-check m-2">
+                      <input id="female" type="radio" value="female" name="gender" formControlName="gender">
+                      <label for="female">Female</label>
+                    </div>
+                  </div>  
                 </div>
               </div>
             </div>
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
               <div class="col">
                 <label class="form-label" for="profile">Profile</label>
                 <input type="file" class="form-control" id="profile" #fileInput>
               </div>
+            </div> -->
+
+            <!-- <div class="row mt-3">
+              <div class="col">
+                <img [src]="url" title="profile picture" height="150px" width="150px" alt="image">
+                <input type="file" id="img" style="display: none;" (change)="onSelect($event)" />
+                <label for="img">Upload Image</label>
+              </div>
+            </div> -->
+            <div class="row mt-3">
+              <div class="col">
+              <label for="inputProject" class="form-label">Projects</label>
+              <select formControlName="project" id="inputProject" class="form-select">
+                <option selected>Choose...</option>
+                <option>BIR</option>
+                <option>PIR</option>
+                <option>Tripesa</option>
+                <option>FOB Madras Online</option>
+                <option>FOB Madras Teller</option>
+                <option>FOB Mysore Teller</option>
+
+              </select>
+              </div>
             </div>
+
+
             <div class="row mt-3">
               <div class="col">
                 <label for="validationCustom04" class="form-label">Email_ID</label>
                 <input type="email" formControlName="email" class="form-control" id="validationCustom04">
-                <span class="text-danger" *ngIf="clientForm.controls['email'].dirty && clientForm.hasError('required','email')">*Email is required</span>
+                <!-- <span class="text-danger" *ngIf="clientForm.controls['email'].dirty && clientForm.hasError('required','email')">*Email is required</span> -->
               </div>
             </div>
             <div class="row mt-3">
@@ -82,28 +155,12 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" (click)="clickAddClient()" class="btn btn-primary">Save changes</button>
+          <button type="button" *ngIf="showAdd" (click)="postClientDetails()" class="btn btn-primary">Add</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateClientDetails()" class="btn btn-primary">Update</button>
         </div>
       </div>
     </div>
   </div>
 
-
-<!-- 
-  <main>
-    <div class="toolbar">
-        <div class="add-employee">
-            <button type="button" class="btn btn-outline-success btn-lg">Add Client</button>
-        </div>
-        <div class="search-employees">
-            <input type="search" class="form-control" placeholder="Search Employee">
-        </div>
-    </div>
-    <div class="employees">
-        <div class="row mt-5">
-            <div class="col text-center">
-                <span class="text-secondary fs-2 fw-bold fst-italic">There are No Client Added!</span>
-            </div>
-        </div>
-    </div>
-</main>  -->
+<!-- footer -->
+<app-footer></app-footer>
