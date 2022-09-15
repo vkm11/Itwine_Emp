@@ -3,24 +3,28 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" color="purple" width="56" height="56" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
                     <h1>Sign-In</h1>
-                    <h6>Please Enter Email and password !!</h6>
+                    <h6>Please Enter Email ID and Password !!</h6>
                 </div>
 
                 <form [formGroup]="signinForm" (ngSubmit)="signIn()">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      
-                      
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        
+                        <span class="text-danger" *ngIf="signinForm.controls['email'].dirty && signinForm.hasError('required','email')">*Email Id is required</span>
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
                       <input  formControlName="password"  type="password" class="form-control" id="exampleInputPassword1">
+                      <span class="text-danger" *ngIf="signinForm.controls['password'].dirty && signinForm.hasError('required','password')">*Password is required</span>
+                         
                     </div>
                     <div class="col-md-12 mb-3 text-center">
-                        <button type="submit" class="btn btn-primary" >Sign-In</button>
+                        <button type="submit" [disabled]="!signinForm.valid" class="loginBtn" >Sign-In</button>
                     </div>
                 </form>
                 <div class="col-md-12 mb-3 text-center">

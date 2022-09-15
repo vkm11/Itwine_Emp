@@ -1,0 +1,109 @@
+<div class="container-fluid g-0"> 
+  <app-header></app-header>
+</div>
+
+<!-- <button class="addEmp" (click)="clickAddClient()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    Add Client
+</button> -->
+<div class="empTable">
+  <button class="addEmp" (click)="clickAddClient()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    Add Client
+  </button>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Client Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="clientForm" class="needs-validation">
+            <div class="row mt-1">
+              <div class="col">
+                  <label for="validationCustom02" class="form-label">First Name</label>
+                  <input type="text" formControlName="firstName" class="form-control" id="validationCustom02" aria-describedby="emailHelp">
+                  <span class="text-danger" *ngIf="clientForm.controls['firstName'].dirty && clientForm.hasError('required','firstName')">*First name is required</span>
+              </div>
+            
+              <div class="col">
+                  <label for="validationCustom03" class="form-label">Last Name</label>
+                  <input type="text" formControlName="lastName" class="form-control" id="validationCustom03" >
+                  <span class="text-danger" *ngIf="clientForm.controls['lastName'].dirty && clientForm.hasError('required','lastName')">*Last name is required</span>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="datepicker" class="form-label">Date of Birth</label>
+                <input type="date" formControlName="date" class="form-control" id="datepicker">
+                <span class="text-danger" *ngIf="clientForm.controls['date'].dirty && clientForm.hasError('required','date')">*Date is required</span>
+              </div>
+              <div class="col">
+                <label for="radiobtn" class="form-label">Gender</label>
+                <div class="d-flex ">
+                  <div class="form-check m-2">
+                    <input class="form-check-input" type="radio" name="gender" id="male">
+                    <label class="form-check-label" for="male">Male</label>
+                  </div>
+                  <div class="form-check m-2">
+                    <input class="form-check-input" type="radio" name="gender" id="female" checked>
+                    <label class="form-check-label" for="female">Female</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label class="form-label" for="profile">Profile</label>
+                <input type="file" class="form-control" id="profile" #fileInput>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="validationCustom04" class="form-label">Email_ID</label>
+                <input type="email" formControlName="email" class="form-control" id="validationCustom04">
+                <span class="text-danger" *ngIf="clientForm.controls['email'].dirty && clientForm.hasError('required','email')">*Email is required</span>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="validationCustom05" class="form-label">Mobile No.</label>
+                <input type="text" formControlName="mobile" class="form-control" id="validationCustom05">
+                <span class="text-danger" *ngIf="clientForm.controls['mobile'].dirty && clientForm.hasError('required','mobile')">*Mobile no is required</span>
+              </div>
+              <div class="col">
+                <label for="validationCustom06" class="form-label">Address</label>
+                <input type="text" formControlName="address" class="form-control" id="validatioCustom06">
+                <span class="text-danger" *ngIf="clientForm.controls['address'].dirty && clientForm.hasError('required','address')">*Mobile no is required</span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="clickAddClient()" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- 
+  <main>
+    <div class="toolbar">
+        <div class="add-employee">
+            <button type="button" class="btn btn-outline-success btn-lg">Add Client</button>
+        </div>
+        <div class="search-employees">
+            <input type="search" class="form-control" placeholder="Search Employee">
+        </div>
+    </div>
+    <div class="employees">
+        <div class="row mt-5">
+            <div class="col text-center">
+                <span class="text-secondary fs-2 fw-bold fst-italic">There are No Client Added!</span>
+            </div>
+        </div>
+    </div>
+</main>  -->

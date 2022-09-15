@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServiceApiService } from '../services/service-api.service';
 import { EmployeeModel } from './employee-dash board.model';
 @Component({
@@ -8,7 +8,7 @@ import { EmployeeModel } from './employee-dash board.model';
   styleUrls: ['./employee-dashboard.component.css']
 })
 export class EmployeeDashboardComponent implements OnInit {
-
+ 
   formValue !: FormGroup
   employeeModelObj : EmployeeModel = new EmployeeModel();
   employeeData !: any;
@@ -21,11 +21,13 @@ export class EmployeeDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      firstName :[""],
-      lastName :[""],
-      email :[""],
-      mobile :[""], 
-      salary :[""],
+      date:["",Validators.required ],
+      firstName :["",Validators.required],
+      lastName :["",Validators.required],
+      email :["",Validators.required],
+      mobile :["",Validators.required], 
+      salary :["",Validators.required],
+     
     })
     this.getAllEmployee();     //call api
     
@@ -36,13 +38,13 @@ export class EmployeeDashboardComponent implements OnInit {
     this.showUpdate=false;
   }
   postEmployeeDetails(){
+    this.employeeModelObj.date = this.formValue.value.date;
     this.employeeModelObj.firstName = this.formValue.value.firstName;
     this.employeeModelObj.lastName = this.formValue.value.lastName;
     this.employeeModelObj.email = this.formValue.value.email;
     this.employeeModelObj.mobile = this.formValue.value.mobile;
     this.employeeModelObj.salary = this.formValue.value.salary;
-
-
+ 
     this.api.postEmployee(this.employeeModelObj)
     .subscribe(res=>{
       console.log(res);
@@ -74,6 +76,8 @@ export class EmployeeDashboardComponent implements OnInit {
     this.showAdd = false;
     this.showUpdate = true;
     this.employeeModelObj.id = row.id;
+    this.formValue.controls['date'].setValue(row.date);
+
     this.formValue.controls['firstName'].setValue(row.firstName);
     this.formValue.controls['lastName'].setValue(row.lastName);
     this.formValue.controls['email'].setValue(row.email);
@@ -81,6 +85,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.formValue.controls['salary'].setValue(row.salary);
   }
   updateEmployeeDetails(){
+    this.employeeModelObj.date = this.formValue.value.date;
     this.employeeModelObj.firstName = this.formValue.value.firstName;
     this.employeeModelObj.lastName = this.formValue.value.lastName;
     this.employeeModelObj.email = this.formValue.value.email;

@@ -1,26 +1,61 @@
-<nav class="navbar navbar-light bg-primary">
+<!-- <nav class="navbar navbar-light">
     <div class="container-fluid">
         <h1 style="color:aliceblue;">I<span class="text-danger">twine</span> Technology</h1>
         <div class="d-flex">
-            <button (click)="clickAddEmployee()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
-                Add Employee
-            </button>
-            <button routerLink="" class="btn btn-danger mx-2">LogOut</button>
+            <button routerLink="" class="logoutBtn">LogOut</button>
         </div>
     </div>
-</nav>
+</nav> -->
+<div class="container-fluid g-0"> 
+    <app-header></app-header>
+</div>
 
 
-<table class="table mt-3">
+    <!-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active d-block w-100">
+            <img src="../../assets/img1.jpg" class="" alt="image1">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="text-primary">Job Openings</h1>
+                <p class="text-warning">Some representative placeholder content for the first slide.</p>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../../assets/img2.jpg" class="" alt="image2">
+          </div>
+          <div class="carousel-item">
+            <img src="../../assets/img3.jpg" class="" alt="image3">
+          </div>
+        </div>
+    </div> -->
+
+
+<div class="empTable">
+    <button class="addEmp" (click)="clickAddEmployee()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    Add Employee
+    </button>
+    <!-- <div class="search-employees">
+        <input type="search" class="form-control" placeholder="Search Employee">
+    </div> -->
+
+    <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form> -->
+</div>
+
+
+<table class="table table-dark table-hover">
     <thead>
-        <tr>
+        <tr style="font-size:20px"> 
             <th scope="col">Employee ID</th>
+            <th scope="col">Date of Joining</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email ID</th>
             <th scope="col">Mobile No.</th>
             <th scope="col">Salary</th>
-            <!-- <th scope="col">Image</th> -->
+            
 
             <th scope="col">Action</th>
         </tr>
@@ -28,12 +63,13 @@
     <tbody>
         <tr *ngFor="let row of employeeData">
             <td>{{row.id}}</td>
+            <td>{{row.date}}</td>
             <td>{{row.firstName}}</td>
             <td>{{row.lastName}}</td>
             <td>{{row.email}}</td>
             <td>{{row.mobile}}</td>
-            <td>{{row.salary}}</td>
-            <!-- <td>{{row.image}}</td> -->
+            <td>₹.{{row.salary}} /-</td>
+           
             <td>
                 <svg (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen " viewBox="0 0 16 16">
                     <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/> 
@@ -52,7 +88,6 @@
     </tbody>
 </table>
 
-  
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -62,29 +97,45 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form [formGroup]="formValue">
+            <form [formGroup]="formValue" class="needs-validation">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">First Name</label>
-                  <input type="text" formControlName="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  
+                    <label for="validationCustom01" class="form-label">Date of Joining</label>
+                    <input type="date" formControlName="date" class="form-control" id="validationCustom01" aria-describedby="emailHelp" >
+                    
+                    <span class="text-danger" *ngIf="formValue.controls['date'].dirty && formValue.hasError('required','date')">*Date is required</span>
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Last Name</label>
-                  <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1">
+                    <label for="validationCustom02" class="form-label">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" id="validationCustom02" aria-describedby="emailHelp">
+                    <span class="text-danger" *ngIf="formValue.controls['firstName'].dirty && formValue.hasError('required','firstName')">*First name is required</span>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                    <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1" >
+                    <span class="text-danger" *ngIf="formValue.controls['lastName'].dirty && formValue.hasError('required','lastName')">*Last name is required</span>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Email_ID</label>
                     <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
+                    <span class="text-danger" *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">*Email is required</span>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Mobile No.</label>
                     <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
+                    <span class="text-danger" *ngIf="formValue.controls['mobile'].dirty && formValue.hasError('required','mobile')">*Mobile no is required</span>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Salary</label>
                     <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1">
+                    <span class="text-danger" *ngIf="formValue.controls['salary'].dirty && formValue.hasError('required','salary')">*Salary is required</span>
                 </div>
-            
+                <div class="row mt-3">
+                    <div class="col">
+                      <label class="form-label" for="profile">Profile</label>
+                      <input type="file" class="form-control" id="profile" #fileInput>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="modal-footer">
@@ -95,3 +146,7 @@
       </div>
     </div>
   </div>
+
+
+<!-- footer -->
+<app-footer></app-footer>

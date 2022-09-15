@@ -1,0 +1,9 @@
+.foot{
+    text-align: center;
+    background-image: linear-gradient(red, yellow);
+    height: 2rem;
+    
+}
+footer{
+    margin: auto;
+}

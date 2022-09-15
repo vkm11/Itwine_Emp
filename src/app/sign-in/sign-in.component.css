@@ -9,6 +9,12 @@
     background: hsla(hue, saturation, lightness, alpha);
     background: linear-gradient(90deg);
     border-radius: 35px 35px 35px;
-    background-color: aquamarine;  
-    /* background-image: url(../../assets/download.png); */
+    background-image: linear-gradient(red, yellow, green, pink);
+}
+.loginBtn{
+    background-image: linear-gradient(rgb(45, 182, 45), yellow);
+    color: black;
+    border-radius: 20px;
+    height: 3em;
+    margin: 5px;
 }

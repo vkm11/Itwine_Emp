@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-in',
@@ -16,8 +16,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.signinForm = this.formBuilder.group({
-      email:[''],
-      password:['']
+      email:['',Validators.required],
+      password:['',Validators.required]
     })
   }
   signIn(){
@@ -29,6 +29,7 @@ export class SignInComponent implements OnInit {
       if(user){
         alert("SignIn Success !!!")
         this.signinForm.reset();
+        // this.router.navigate(['dashboard'])
         this.router.navigate(['home'])
       }else{
         alert("user not found")

@@ -1,0 +1,20 @@
+.addEmp{
+    background-image: linear-gradient(rgb(45, 182, 45), yellow);
+    color: black;
+    border-radius: 20px;
+    height: 3em;
+    margin: 5px;
+}
+.logoutBtn{
+    background-image: linear-gradient(red, yellow);
+    color: black;
+    border-radius: 20px;
+    height: 3em;
+    margin: 5px;
+}
+.navbar{
+    background-image: linear-gradient(rgb(230, 64, 64), yellow);
+}
+a{
+    text-decoration: none;
+}

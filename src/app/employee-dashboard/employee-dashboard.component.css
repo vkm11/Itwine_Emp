@@ -1,0 +1,48 @@
+.addEmp{
+    background-image: linear-gradient(rgb(45, 182, 45), yellow);
+    color: black;
+    border-radius: 20px;
+    height: 3em;
+    margin: 5px;
+    float: right;
+}
+.logoutBtn{
+    background-image: linear-gradient(red, yellow);
+    color: black;
+    border-radius: 20px;
+    height: 3em;
+    margin: 5px;
+}
+.navbar{
+    background-image: linear-gradient(rgb(230, 64, 64), yellow);
+    height: 100px;
+}
+.empTable{
+    /* background-image: linear-gradient(red,pink); */
+    justify-content: center;
+    /* size: 1rem; */
+    height: 5rem;
+    padding-top: 10px;
+    margin-bottom: auto;
+    color: aliceblue;
+    display: flex;
+    position:relative;
+
+}
+button{
+    float: right;
+}
+/* #carouselExampleFade .carousel-item img {
+    object-fit: cover;
+    object-position: center;
+    height: 100vh;
+    overflow: hidden;
+} */
+/* .search-employees{
+    position: relative;
+    float: right;
+    display: flex;
+    width: 15rem;
+    height: 50px;
+    margin-top: 5px;
+} */
