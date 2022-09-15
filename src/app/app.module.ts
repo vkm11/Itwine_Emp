@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     FooterComponent,
     ClientDashboardComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

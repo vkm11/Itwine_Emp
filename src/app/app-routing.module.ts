@@ -6,6 +6,7 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { HomeComponent } from './home/home.component';
 
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 const routes: Routes = [
   {
     path: 'sign-up',
@@ -26,7 +27,8 @@ const routes: Routes = [
   {
     path: 'client-dashboard',
     component: ClientDashboardComponent
-  }
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

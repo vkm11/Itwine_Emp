@@ -15,7 +15,7 @@ export class ClientDashboardComponent implements OnInit {
   clientModelObj : clientModel = new clientModel();
   showAdd!: boolean;            // hide show
   showUpdate !: boolean;        // hide show
-  // clientData: Client[] | undefined;
+
   clientData !: any;
   
   url="https://img.icons8.com/ios/2x/github.png"
@@ -25,8 +25,7 @@ export class ClientDashboardComponent implements OnInit {
     
   ngOnInit(): void {
     this.clientForm = this.fb.group({
-      firstName: new FormControl('',[Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
-      
+      firstName: new FormControl('',[Validators.required]),
       lastName: ['',Validators.required],
       date: ['',Validators.required],
       gender: ['',Validators.required],
