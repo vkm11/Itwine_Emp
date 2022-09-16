@@ -9,8 +9,7 @@
     background: hsla(hue, saturation, lightness, alpha);
     background: linear-gradient(90deg);
     border-radius: 35px 35px 35px;
-    /* background-color: aquamarine;   */
-    background-image: linear-gradient(rgb(185, 57, 57), yellow, rgb(72, 192, 72), rgb(206, 98, 116));
+    background-image: linear-gradient(red, yellow, green, pink);
 }
 .signupBtn{
     background-image: linear-gradient(rgb(45, 182, 45), yellow);

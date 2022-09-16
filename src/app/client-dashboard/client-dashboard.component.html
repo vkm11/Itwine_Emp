@@ -98,7 +98,19 @@
               <div class="col">
                   <label for="validationCustom03" class="form-label">Last Name</label>
                   <input type="text" formControlName="lastName" class="form-control" id="validationCustom03" >
-                  <span class="text-danger" *ngIf="clientForm.controls['lastName'].dirty && clientForm.hasError('required','lastName')">*Last name is required</span>
+                  <!-- <span class="text-danger" *ngIf="clientForm.controls['lastName'].dirty && clientForm.hasError('required','lastName')">*Last name is required</span> -->
+              
+                 <!-- Validation -->
+                  <div class="form-text text-danger" *ngIf="clientForm.controls['lastName'].errors?.['required'] && (clientForm.controls['lastName'].touched || clientForm.controls['lastName'].dirty)">
+                      Last Name is Required.
+                  </div>
+                  <div class="form-text text-danger" *ngIf="clientForm.controls['lastName'].errors?.['minlength'] && (clientForm.controls['lastName'].touched || clientForm.controls['lastName'].dirty)">
+                      Last name is too short
+                  </div>
+                  <div class="form-text text-danger" *ngIf="clientForm.controls['lastName'].errors?.['pattern'] && (clientForm.controls['lastName'].dirty || clientForm.controls['lastName'].touched)">
+                      Last Name should start with alphabet
+                  </div>
+              
               </div>
             </div>
             <div class="row mt-3">
@@ -109,8 +121,8 @@
               </div>
               <div class="col">
                 <div class="form-group">
-                  <label for="gender">Gender:</label>
-                  <div class="d-flex ">
+                  <label for="gender">Gender</label>
+                  <div class="d-flex m-3">
 
                     <!-- <div class="form-check m-2">
                       <input id="male"  type="radio" value="male" name="gender" formControlName="gender">
@@ -121,7 +133,7 @@
                       <input id="female" type="radio" value="female" name="gender" formControlName="gender">
                       <label class="m-1" for="female">Female</label>
                     </div> -->
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline ">
                       <input type="radio" class="form-check-input" formControlName="gender" value="male" id="male">
                       <label class="form-check-label" for="male">Male</label>
                     </div>

@@ -44,7 +44,9 @@
     </button>
 </div>
 
+
 <div id="htmlData">
+
     <h2 class="employee-heading">Employee Details</h2>
 <table class="table table-dark table-hover">
     <thead>
@@ -88,6 +90,14 @@
         </tr>
     </tbody>
 </table>
+<mat-paginator [length]="100"
+    [pageSize]="10"
+ 
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+
+</mat-paginator>
+
 </div>
 
   <!-- Modal -->
@@ -132,12 +142,12 @@
                     <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1">
                     <span class="text-danger" *ngIf="formValue.controls['salary'].dirty && formValue.hasError('required','salary')">*Salary is required</span>
                 </div>
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                     <div class="col">
                       <label class="form-label" for="profile">Profile</label>
-                      <input type="file" class="form-control" id="profile" #fileInput>
+                      <input type="file" formControlName="file"  class="form-control" id="profile" #fileInput>
                     </div>
-                </div>
+                </div> -->
             </form>
         </div>
         <div class="modal-footer">
