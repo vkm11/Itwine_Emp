@@ -34,7 +34,7 @@ export class ClientDashboardComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
+      PDF.save('clientsData.pdf');
     });
   }
 
@@ -43,7 +43,11 @@ export class ClientDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientForm = this.fb.group({
-      firstName: new FormControl('',[Validators.required]),
+    firstName: new FormControl('',[Validators.required,
+    Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
+
+      // firstName: new FormControl('',[Validators, required, 
+      //   Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
       lastName: ['',Validators.required],
       date: ['',Validators.required],
       gender: ['',Validators.required],

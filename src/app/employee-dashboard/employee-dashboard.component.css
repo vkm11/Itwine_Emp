@@ -32,17 +32,8 @@
 button{
     float: right;
 }
-/* #carouselExampleFade .carousel-item img {
-    object-fit: cover;
-    object-position: center;
-    height: 100vh;
-    overflow: hidden;
-} */
-/* .search-employees{
-    position: relative;
-    float: right;
-    display: flex;
-    width: 15rem;
-    height: 50px;
-    margin-top: 5px;
-} */
+.employee-heading{
+    text-align: center;
+    font-style:italic;
+    color: brown;
+}

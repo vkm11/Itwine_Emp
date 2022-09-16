@@ -14,7 +14,6 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        
                         <span class="text-danger" *ngIf="signinForm.controls['email'].dirty && signinForm.hasError('required','email')">*Email Id is required</span>
                     </div>
                     <div class="mb-3">

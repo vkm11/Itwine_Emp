@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit {
       mobile:["",Validators.required],
     })
   }
+  
   signUp(){
     this.http.post<any>("http://localhost:3000/signupUser",this.signupForm.value)
     .subscribe(res=>{
@@ -31,6 +32,7 @@ export class SignUpComponent implements OnInit {
     },err=>{
       alert("Something went wrong")
     })
+    console.log(this.signupForm.value)
   }
 
 }

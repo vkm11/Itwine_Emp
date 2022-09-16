@@ -17,6 +17,7 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     this.signinForm = this.formBuilder.group({
       email:['',Validators.required],
+      
       password:['',Validators.required]
     })
   }
@@ -37,5 +38,7 @@ export class SignInComponent implements OnInit {
     },err=>{
       alert("Something went wrong")
     })
+    console.log(this.signinForm.value)
   }
+  
 }
