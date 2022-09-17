@@ -38,23 +38,26 @@ export class ClientDashboardComponent implements OnInit {
     });
   }
 
-
-
-
   ngOnInit(): void {
     this.clientForm = this.fb.group({
-    firstName: new FormControl('',[Validators.required,
-    Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
+      // firstName:['', Validators.required]
+      // lastName:['', Validators.required]
 
-      // firstName: new FormControl('',[Validators, required, 
-      //   Validators.minLength(2), Validators.pattern("[a-zA-Z].*")]),
-      lastName: ['',Validators.required],
-      date: ['',Validators.required],
-      gender: ['',Validators.required],
-      email: ['',Validators.required],
-      project: ['',Validators.required],
+      firstName: new FormControl('',[Validators.required,
+      Validators.minLength(3), Validators.maxLength(35), Validators.pattern("[a-zA-Z].*")]),
+
+      lastName: new FormControl('',[Validators.required,
+      Validators.minLength(3), Validators.maxLength(35), Validators.pattern("[a-zA-Z].*")]),
+
+      date: new FormControl ('',[Validators.required]),
+
+      gender: new FormControl('',[Validators.required]),
+
+      email: new FormControl('',[Validators.required, Validators.email]),
+      project: ['',Validators.required,],
       address: ['',Validators.required],
-      mobile: ['',Validators.required],
+      mobile: new FormControl ('',[Validators.required,
+        Validators.maxLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     })
     this.getAllClient();
   }

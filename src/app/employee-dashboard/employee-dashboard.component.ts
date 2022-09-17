@@ -4,6 +4,7 @@ import { ServiceApiService } from '../services/service-api.service';
 import { EmployeeModel } from './employee-dash board.model';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
@@ -48,7 +49,6 @@ export class EmployeeDashboardComponent implements OnInit {
      
     })
     this.getAllEmployee();     //call api
-    
   }
   clickAddEmployee(){
     this.formValue.reset();   // hide add show update button
