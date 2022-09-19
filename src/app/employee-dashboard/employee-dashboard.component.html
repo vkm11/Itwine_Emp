@@ -84,15 +84,11 @@
                 <div class="mb-3">
                     <label for="validationCustom01" class="form-label">Date of Joining</label>
                     <input type="date" formControlName="date" class="form-control" id="validationCustom01" aria-describedby="emailHelp" >
-                    <!-- <span class="text-danger" *ngIf="formValue.controls['date'].dirty && formValue.hasError('required','date')">*Date is required</span> -->
-                    
 
-                <!-- Validation -->
+                    <!-- Validation -->
                     <div class="form-text text-danger" *ngIf="formValue.controls['date'].errors?.['required'] && (formValue.controls['date'].touched || formValue.controls['date'].dirty)">
                         Date is Required.
                     </div>
-
-
                 </div>
                 <div class="mb-3">
                     <label for="validationCustom02" class="form-label">First Name</label>
