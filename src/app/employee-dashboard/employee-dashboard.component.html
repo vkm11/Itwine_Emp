@@ -84,34 +84,94 @@
                 <div class="mb-3">
                     <label for="validationCustom01" class="form-label">Date of Joining</label>
                     <input type="date" formControlName="date" class="form-control" id="validationCustom01" aria-describedby="emailHelp" >
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['date'].dirty && formValue.hasError('required','date')">*Date is required</span> -->
                     
-                    <span class="text-danger" *ngIf="formValue.controls['date'].dirty && formValue.hasError('required','date')">*Date is required</span>
+
+                <!-- Validation -->
+                    <div class="form-text text-danger" *ngIf="formValue.controls['date'].errors?.['required'] && (formValue.controls['date'].touched || formValue.controls['date'].dirty)">
+                        Date is Required.
+                    </div>
+
+
                 </div>
                 <div class="mb-3">
                     <label for="validationCustom02" class="form-label">First Name</label>
                     <input type="text" formControlName="firstName" class="form-control" id="validationCustom02" aria-describedby="emailHelp">
-                    <span class="text-danger" *ngIf="formValue.controls['firstName'].dirty && formValue.hasError('required','firstName')">*First name is required</span>
-
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['firstName'].dirty && formValue.hasError('required','firstName')">*First name is required</span> -->
+                    <!-- Validation -->
+                        <div class="form-text text-danger" *ngIf="formValue.controls['firstName'].errors?.['required'] && (formValue.controls['firstName'].touched || formValue.controls['firstName'].dirty)">
+                            First Name is Required.
+                        </div>
+                        <div class="form-text text-danger" *ngIf="formValue.controls['firstName'].errors?.['minlength'] && (formValue.controls['firstName'].touched || formValue.controls['firstName'].dirty)">
+                            First name is too short
+                        </div>
+                        <div class="form-text text-danger" *ngIf="formValue.controls['firstName'].errors?.['maxlength'] && (formValue.controls['firstName'].touched || formValue.controls['firstName'].dirty)">
+                            First name is too long maxlength is 35 characters only
+                        </div>
+                        <div class="form-text text-danger" *ngIf="formValue.controls['firstName'].errors?.['pattern'] && (formValue.controls['firstName'].dirty || formValue.controls['firstName'].touched)">
+                            First Name should start with alphabet
+                        </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Last Name</label>
                     <input type="text" formControlName="lastName" class="form-control" id="exampleInputPassword1" >
-                    <span class="text-danger" *ngIf="formValue.controls['lastName'].dirty && formValue.hasError('required','lastName')">*Last name is required</span>
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['lastName'].dirty && formValue.hasError('required','lastName')">*Last name is required</span> -->
+                
+                    <!-- Validation -->
+                    <div class="form-text text-danger" *ngIf="formValue.controls['lastName'].errors?.['required'] && (formValue.controls['lastName'].touched || formValue.controls['lastName'].dirty)">
+                        Last Name is Required.
+                    </div>
+                    <div class="form-text text-danger" *ngIf="formValue.controls['lastName'].errors?.['minlength'] && (formValue.controls['lastName'].touched || formValue.controls['lastName'].dirty)">
+                        Last name is too short
+                    </div>
+                    <div class="form-text text-danger" *ngIf="formValue.controls['lastName'].errors?.['maxlength'] && (formValue.controls['lastName'].touched || formValue.controls['lastName'].dirty)">
+                        Last name is too long maxlength is 35 characters only
+                    </div>
+                    <div class="form-text text-danger" *ngIf="formValue.controls['lastName'].errors?.['pattern'] && (formValue.controls['lastName'].dirty || formValue.controls['lastName'].touched)">
+                        First Name should start with alphabet
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Email_ID</label>
                     <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
-                    <span class="text-danger" *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">*Email is required</span>
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">*Email is required</span> -->
+                
+                    <!-- Validation -->
+                    <div class="form-text text-danger" *ngIf="formValue.controls['email'] && formValue.controls['email'].invalid && formValue.controls['email'].touched">
+                        Email is Required and Valid formate.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Mobile No.</label>
                     <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
-                    <span class="text-danger" *ngIf="formValue.controls['mobile'].dirty && formValue.hasError('required','mobile')">*Mobile no is required</span>
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['mobile'].dirty && formValue.hasError('required','mobile')">*Mobile no is required</span> -->
+                
+                     <!-- Validation -->
+                        <div class="form-text text-danger" *ngIf="formValue.controls['mobile'].errors?.['required'] && (formValue.controls['mobile'].touched || formValue.controls['mobile'].dirty)">
+                            Mobile Number is Required.
+                        </div>
+                        <div class="form-text text-danger" *ngIf="formValue.controls['mobile'].errors?.['pattern'] && (formValue.controls['mobile'].dirty || formValue.controls['mobile'].touched)">
+                            Mobile Number should Contain 10 numbers
+                        </div> 
+                        <div class="form-text text-danger" *ngIf="formValue.controls['mobile'].errors?.['maxlength'] && (formValue.controls['mobile'].touched || formValue.controls['mobile'].dirty)">
+                            Mobile Number is 10 digits only
+                        </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Salary</label>
                     <input type="text" formControlName="salary" class="form-control" id="exampleInputPassword1">
-                    <span class="text-danger" *ngIf="formValue.controls['salary'].dirty && formValue.hasError('required','salary')">*Salary is required</span>
+                    <!-- <span class="text-danger" *ngIf="formValue.controls['salary'].dirty && formValue.hasError('required','salary')">*Salary is required</span> -->
+                    <!-- Validation -->
+                        <div class="form-text text-danger" *ngIf="formValue.controls['salary'].errors?.['required'] && (formValue.controls['salary'].touched || formValue.controls['salary'].dirty)">
+                             Salary is Required.
+                        </div>
+                        <div class="form-text text-danger" *ngIf="formValue.controls['salary'].errors?.['pattern'] && (formValue.controls['salary'].dirty || formValue.controls['salary'].touched)">
+                            Salary should Contain only numbers
+                        </div> 
+                        <!-- <div class="form-text text-danger" *ngIf="formValue.controls['salary'].errors?.['maxlength'] && (formValue.controls['salary'].touched || formValue.controls['salary'].dirty)">
+                            Salary is 10 digits only
+                        </div> -->
+                          
                 </div>
                 <!-- <div class="row mt-3">
                     <div class="col">

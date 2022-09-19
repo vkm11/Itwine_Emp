@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceApiService } from '../services/service-api.service';
 import { EmployeeModel } from './employee-dash board.model';
 import jsPDF from 'jspdf';
@@ -40,12 +40,25 @@ export class EmployeeDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      date:["",Validators.required ],
-      firstName :["",Validators.required],
-      lastName :["",Validators.required],
-      email :["",Validators.required],
-      mobile :["",Validators.required], 
-      salary :["",Validators.required],
+      // date:["",Validators.required ],
+      date: new FormControl ('',[Validators.required]),
+      // firstName :["",Validators.required],
+      // lastName :["",Validators.required],
+      // email :["",Validators.required,],
+      firstName: new FormControl('',[Validators.required,
+        Validators.minLength(3), Validators.maxLength(35), Validators.pattern("[a-zA-Z].*")]),
+  
+      lastName : new FormControl('',[Validators.required,
+        Validators.minLength(3), Validators.maxLength(30), Validators.pattern("[a-zA-Z].*")]),
+      
+      email: new FormControl('',[Validators.required, Validators.email]),
+      
+      // mobile :["",Validators.required], 
+      mobile: new FormControl ('',[Validators.required,
+        Validators.maxLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+      // salary :["",Validators.required],
+      salary: new FormControl ('',[Validators.required, Validators.maxLength(20),
+         Validators.pattern(/^[0-9]{1,15}$/)]),
      
     })
     this.getAllEmployee();     //call api
