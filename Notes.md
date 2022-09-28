@@ -14,3 +14,5 @@ or
 - json-server --watch db.json
 
 
+## install material UI
+- ng add @angular/material
