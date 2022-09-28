@@ -132,9 +132,10 @@
                     <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1">
                     <!-- <span class="text-danger" *ngIf="formValue.controls['email'].dirty && formValue.hasError('required','email')">*Email is required</span> -->
                 
+                   
                     <!-- Validation -->
                     <div class="form-text text-danger" *ngIf="formValue.controls['email'] && formValue.controls['email'].invalid && formValue.controls['email'].touched">
-                        Email is Required and Valid formate.
+                        Email ID is Required.
                     </div>
                 </div>
                 <div class="mb-3">
@@ -166,12 +167,13 @@
                         </div> 
                           
                 </div>
-                <!-- <div class="row mt-3">
+               
+                <div class="row mt-3">
                     <div class="col">
                       <label class="form-label" for="profile">Profile</label>
                       <input type="file" formControlName="file"  class="form-control" id="profile" #fileInput>
                     </div>
-                </div> -->
+                </div>
             </form>
         </div>
         <div class="modal-footer">
@@ -179,6 +181,7 @@
           <button type="button" [disabled]="formValue.invalid" *ngIf="showAdd" (click)="postEmployeeDetails()" class="btn btn-primary">Add</button>
           <button type="button" *ngIf="showUpdate" (click)="updateEmployeeDetails()" class="btn btn-primary">Update</button>
         </div>
+
       </div>
     </div>
   </div>

@@ -5,10 +5,13 @@
 <!-- <button class="addEmp" (click)="clickAddClient()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" >
     Add Client
 </button> -->
+
+
 <div class="empTable">
   <button class="addEmp" (click)="clickAddClient()" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" >
     Add Clients
   </button>
+
   
   <button class="addEmp" (click)="openPDF()">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
@@ -17,6 +20,7 @@
     </svg> 
     <span class="p-2">PDF</span>
   </button>
+ 
 </div>
 
 
@@ -26,12 +30,13 @@
   <thead>
       <tr style="font-size:20px"> 
           <th scope="col">Client ID</th>
+          <!-- <th scope="col">Profile</th> -->
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Date of Birth</th>
           <th scope="col">Projects</th>
           <th scope="col">Gender</th>
-          <th scope="col">Email ID</th>
+          <th scope="col">Email ID</th>    
           <th scope="col">Mobile No.</th>
           <th scope="col">Address</th>
           <th scope="col">Action</th>
@@ -40,6 +45,7 @@
   <tbody>
       <tr *ngFor="let row of clientData">
           <td>{{row.id}}</td>
+          <!-- <td><img style="width:100px; border-radius: 50%; height:100px" [src]="row.profile"></td> -->
           <td>{{row.firstName}}</td>
           <td>{{row.lastName}}</td>
           <td>{{row.date}}</td>
@@ -48,16 +54,15 @@
           <td>{{row.email}}</td>
           <td>{{row.mobile}}</td>
           <td>{{row.address}}</td>
-
           <td>
-              <svg (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen " viewBox="0 0 16 16">
-                  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/> 
-              </svg>
-              
-              <svg (click)="deleteClient(row)" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-x mx-3" viewBox="0 0 16 16">
-                  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                  <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
-              </svg>
+            <svg (click)="onEdit(row)" data-bs-toggle="modal" data-bs-target="#exampleModal" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pen " viewBox="0 0 16 16">
+              <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/> 
+            </svg>
+            
+            <svg (click)="deleteClient(row)" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-x mx-3" viewBox="0 0 16 16">
+              <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+              <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+            </svg>
           </td>
       </tr>
   </tbody>
@@ -82,6 +87,7 @@
                   <input type="text" formControlName="firstName" class="form-control" id="validationCustom02" aria-describedby="emailHelp">
                   <!-- <span class="text-danger" *ngIf="clientForm.controls['firstName'].dirty && clientForm.hasError('required','firstName')">*First name is required</span> -->
                
+                  
                   <!-- Validation -->
                   <div class="form-text text-danger" *ngIf="clientForm.controls['firstName'].errors?.['required'] && (clientForm.controls['firstName'].touched || clientForm.controls['firstName'].dirty)">
                       First Name is Required.
@@ -95,6 +101,7 @@
                   <div class="form-text text-danger" *ngIf="clientForm.controls['firstName'].errors?.['pattern'] && (clientForm.controls['firstName'].dirty || clientForm.controls['firstName'].touched)">
                       First Name should start with alphabet
                   </div>
+                 
                   
               </div>
             
@@ -128,6 +135,9 @@
                 <div class="form-text text-danger" *ngIf="clientForm.controls['date'].errors?.['required'] && (clientForm.controls['date'].touched || clientForm.controls['date'].dirty)">
                   Date is Required.
                 </div>
+                <div class="form-text text-danger" *ngIf="clientForm.controls['date'].errors?.['pattern'] && (clientForm.controls['date'].touched || clientForm.controls['date'].dirty)">
+                  please enter valid date 
+                </div> 
 
               </div>
               <div class="col">
@@ -153,20 +163,6 @@
                 </div>
               </div>
             </div>
-            <!-- <div class="row mt-3">
-              <div class="col">
-                <label class="form-label" for="profile">Profile</label>
-                <input type="file" class="form-control" id="profile" #fileInput>
-              </div>
-            </div> -->
-
-            <!-- <div class="row mt-3">
-              <div class="col">
-                <img [src]="url" title="profile picture" height="150px" width="150px" alt="image">
-                <input type="file" id="img" style="display: none;" (change)="onSelect($event)" />
-                <label for="img">Upload Image</label>
-              </div>
-            </div> -->
             <div class="row mt-3">
               <div class="col">
                 <label for="inputProject" class="form-label">Projects</label>
@@ -182,7 +178,7 @@
                 
                 <!-- Validation -->
                 <div class="form-text text-danger" *ngIf="clientForm.controls['project'].errors?.['required'] && (clientForm.controls['project'].touched || clientForm.controls['project'].dirty)">
-                   Please Select Project.
+                  Please Select Project.
                 </div>
 
               </div>
@@ -233,6 +229,12 @@
               
               </div>
             </div>
+            <!-- <div class="row mt-3">
+              <div class="col">
+                <label class="form-label" for="profiles">Profile</label>
+                <input type="file" formControlName="profile"  class="form-control" id="profiles" #fileInput>
+              </div>
+            </div> -->
           </form>
         </div>
         <div class="modal-footer">

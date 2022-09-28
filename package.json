@@ -20,11 +20,14 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "angular-particle": "^1.0.4",
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
     "jspdf": "^2.5.1",
+    "ng-particles": "^3.3.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "tsparticles-engine": "^2.3.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

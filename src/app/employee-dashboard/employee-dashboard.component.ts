@@ -53,6 +53,7 @@ export class EmployeeDashboardComponent implements OnInit {
       
       email: new FormControl('',[Validators.required, Validators.email]),
       
+      
       // mobile :["",Validators.required], 
       mobile: new FormControl ('',[Validators.required,
         Validators.maxLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
@@ -79,7 +80,7 @@ export class EmployeeDashboardComponent implements OnInit {
     this.api.postEmployee(this.employeeModelObj)
     .subscribe(res=>{
       console.log(res);
-      alert("Employee added Successfully")
+      alert("Employee Added Successfully")
       let ref = document.getElementById("cancel")
       ref?.click();
       this.formValue.reset();
@@ -130,6 +131,9 @@ export class EmployeeDashboardComponent implements OnInit {
       ref?.click();
       this.formValue.reset();
       this.getAllEmployee();
+    
     })
+
   }
+  
 }

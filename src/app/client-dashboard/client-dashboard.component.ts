@@ -2,6 +2,9 @@ import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 import { ClientService } from '../services/client.service';
 import { clientModel } from '../models/client.model';
+// import { clientModel } from './client-dash board.model';
+
+// download pdf this 2 files are required
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -11,7 +14,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./client-dashboard.component.css']
 })
 export class ClientDashboardComponent implements OnInit {
-  // @ViewChild('fileInput') fileInput : any;
+  //  @ViewChild('fileInput') fileInput : any;
   clientForm !: FormGroup;
   clientModelObj : clientModel = new clientModel();
   showAdd!: boolean;            // hide show
@@ -19,7 +22,6 @@ export class ClientDashboardComponent implements OnInit {
 
   clientData !: any;
   
-  url="https://img.icons8.com/ios/2x/github.png"
   constructor(private fb: FormBuilder,
     private api : ClientService) { }
 
@@ -50,11 +52,11 @@ export class ClientDashboardComponent implements OnInit {
       Validators.minLength(3), Validators.maxLength(35), Validators.pattern("[a-zA-Z].*")]),
 
       date: new FormControl ('',[Validators.required]),
-
       gender: new FormControl('',[Validators.required]),
-
+      // profile: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required, Validators.email]),
       project: ['',Validators.required,],
+      
       address: ['',Validators.required],
       mobile: new FormControl ('',[Validators.required,
         Validators.maxLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
@@ -72,6 +74,7 @@ export class ClientDashboardComponent implements OnInit {
     this.clientModelObj.date = this.clientForm.value.date;
     this.clientModelObj.mobile = this.clientForm.value.mobile;
     // this.clientModelObj.profile = this.clientForm.value.profile;
+
     this.clientModelObj.email = this.clientForm.value.email;
     this.clientModelObj.project = this.clientForm.value.project;
     this.clientModelObj.gender = this.clientForm.value.gender;
@@ -80,7 +83,7 @@ export class ClientDashboardComponent implements OnInit {
     this.api.postClient(this.clientModelObj)
     .subscribe(res=>{
       console.log(res);
-      alert("Client added Successfully")
+      alert("Client Added Successfully")
       let ref = document.getElementById("cancel")
       ref?.click();
       this.clientForm.reset();
@@ -114,6 +117,8 @@ export class ClientDashboardComponent implements OnInit {
     this.clientForm.controls['firstName'].setValue(row.firstName);
     this.clientForm.controls['lastName'].setValue(row.lastName);
     this.clientForm.controls['email'].setValue(row.email);
+    // this.clientForm.controls['profile'].setValue(row.profile);
+
     this.clientForm.controls['project'].setValue(row.project);
     this.clientForm.controls['mobile'].setValue(row.mobile);
     this.clientForm.controls["gender"].setValue(row.gender);
@@ -125,6 +130,8 @@ export class ClientDashboardComponent implements OnInit {
     this.clientModelObj.firstName = this.clientForm.value.firstName;
     this.clientModelObj.lastName = this.clientForm.value.lastName;
     this.clientModelObj.email = this.clientForm.value.email;
+    // this.clientModelObj.profile = this.clientForm.value.profile;
+
     this.clientModelObj.project = this.clientForm.value.project;
     this.clientModelObj.mobile = this.clientForm.value.mobile;
     this.clientModelObj.gender = this.clientForm.value.gender;
@@ -139,17 +146,8 @@ export class ClientDashboardComponent implements OnInit {
       this.clientForm.reset();
       this.getAllClient();
     })
+    
   }
-  // onSelect(event){
-  //   if(event.target.files[0]){
-  //     let reader = new FileReader();
-  //     reader.readAsDataURL(event.target.files[0]);
-  //     reader.onload=(event:any)=>{
-  //       this.url = event.target.result;
-  //     }
-  //   }
-  // }
- 
 }
 
 

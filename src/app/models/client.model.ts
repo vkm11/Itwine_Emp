@@ -8,5 +8,5 @@ export class clientModel{
     mobile : number = 0;
     address : string="";
     gender : string="";
-    profile : string="";
+    // profile : string='';
 } 
