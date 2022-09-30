@@ -25,3 +25,11 @@
     font-style: italic;
     color:brown;
 }
+/* .icon-color{
+    color: red;
+    margin-top: 15px;
+} */
+.mat-icon{
+    color: red;
+    margin-top: 5px;
+}

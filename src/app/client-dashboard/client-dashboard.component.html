@@ -34,7 +34,7 @@
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Date of Birth</th>
-          <th scope="col">Projects</th>
+          <th scope="col">Projects<mat-icon>favorite</mat-icon></th>
           <th scope="col">Gender</th>
           <th scope="col">Email ID</th>    
           <th scope="col">Mobile No.</th>
@@ -69,8 +69,6 @@
 </table>
 </div>
 
-
-
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -87,8 +85,6 @@
                   <input type="text" formControlName="firstName" class="form-control" id="validationCustom02" aria-describedby="emailHelp">
                   <!-- <span class="text-danger" *ngIf="clientForm.controls['firstName'].dirty && clientForm.hasError('required','firstName')">*First name is required</span> -->
                
-
-                  
                   <!-- Validation -->
                   <div class="form-text text-danger" *ngIf="clientForm.controls['firstName'].errors?.['required'] && (clientForm.controls['firstName'].touched || clientForm.controls['firstName'].dirty)">
                       First Name is Required.
